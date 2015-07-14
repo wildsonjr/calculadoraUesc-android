@@ -7,7 +7,7 @@
     <string name="calcular">Calcular</string>
     
     <string name="hint">%1$dº crédito</string>
-    <string name="x">x</string>
+    <string name="remove_credito">-</string>
     
     <string name="situacao">Situação:</string>
     <string name="media">Média:</string>
@@ -16,6 +16,10 @@
     <string name="not_available">N/A</string>
     <string name="aprovado">Aprovado</string>
     <string name="reprovado">Reprovado</string>
-    <string name="em_final">Em final</string>
+    <string name="em_final">Final</string>
+
+    <string name="parabens">Parabéns</string>
+    <string name="nao_ha_como_passar">Não há como passar</string>
+    <string name="precisa_de">Precisa de %.2f!</string>
 
 </resources>

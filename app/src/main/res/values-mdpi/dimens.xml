@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="situacao_text_size">40sp</dimen>
+    <dimen name="media_text_size">40sp</dimen>
+    <dimen name="info_text_size">30sp</dimen>
+
+    <dimen name="ll_tela">180dp</dimen>
+</resources>

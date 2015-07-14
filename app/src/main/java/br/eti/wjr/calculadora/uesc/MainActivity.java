@@ -38,7 +38,8 @@ public class MainActivity extends Activity {
      * KeyListener que permite apenas a entrada de números (0-9) com casas decimais.
      */
     private DigitsKeyListener decimalKeyListener = new DigitsKeyListener(false, true);
-    
+
+    private TextView txvSituacao, txvInfo, txvMedia;
     
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -61,7 +62,14 @@ public class MainActivity extends Activity {
         
         Button btnCalcular = (Button) findViewById(R.id.btnCalcular);
         btnCalcular.setOnClickListener(btnCalcularListener);
-        
+
+        Button btnAc = (Button) findViewById(R.id.btnAC);
+        btnAc.setOnClickListener(btnAcListener);
+
+        txvSituacao = (TextView) findViewById(R.id.txvSituacao);
+        txvMedia = (TextView) findViewById(R.id.txvMedia);
+        txvInfo = (TextView) findViewById(R.id.txvInfo);
+
         adicionarCredito();
     }
     
@@ -87,6 +95,22 @@ public class MainActivity extends Activity {
     private OnClickListener btnRemoverCreditoListener = new OnClickListener() {
         public void onClick(View view) {
             removerCredito((LinearLayout) ((Button) view).getParent());
+        }
+    };
+
+    /**
+     * Evento de click atribuído ao botão de limpar tela (AC).
+     */
+    private OnClickListener btnAcListener = new OnClickListener() {
+        public void onClick(View view) {
+            txvInfo.setText("");
+            txvMedia.setText("");
+            txvSituacao.setText("");
+
+            for (int i=0; i<editTextList.size(); i++){
+                EditText editText = editTextList.get(i);
+                editText.setText("");
+            }
         }
     };
     
@@ -126,18 +150,19 @@ public class MainActivity extends Activity {
                 situacao = R.string.em_final;
                 cor = Color.rgb(127, 0, 0);
             }
-            
-            TextView textView;
-            
-            textView = (TextView) findViewById(R.id.txvSituacao);
-            textView.setText(getResources().getString(situacao));
-            textView.setTextColor(cor);
-            
-            textView = (TextView) findViewById(R.id.txvMedia);
-            textView.setText(String.format(Locale.US, "%.2f", media));
-            
-            textView = (TextView) findViewById(R.id.txvFinal);
-            textView.setText(String.format(Locale.US, "%.2f", provaFinal));
+
+            txvSituacao.setText(getResources().getString(situacao));
+//            textView.setTextColor(cor);
+
+            txvMedia.setText(String.format(Locale.US, "%.2f", media));
+
+            if(provaFinal<=10&&provaFinal>0){ //Se a nota para a final estiver entre 0 e 10 -- em final
+                txvInfo.setText(String.format(getResources().getString(R.string.precisa_de), provaFinal));
+            } else if(provaFinal>10){ //Se a nota para a final for maior que 10 -- reprovado
+                txvInfo.setText(getResources().getString(R.string.nao_ha_como_passar));
+            } else if(provaFinal==0){ //Se a nota para a final for igual a 0 -- aprovado
+                txvInfo.setText(getResources().getString(R.string.parabens));
+            }
         }
     };
     
@@ -193,10 +218,11 @@ public class MainActivity extends Activity {
      * @return O LinearLayout contendo o crédito e o botão de remoção.
      */
     private LinearLayout createRow() {
-        LayoutParams lp1 = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 5);
+        LayoutParams lp1 = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 4);
         LayoutParams lp2 = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
-        
+
         LinearLayout linearLayout = new LinearLayout(this);
+
         linearLayout.addView(createEditText(editTextList.size() + 1), lp1);
         linearLayout.addView(createButton(), lp2);
         
@@ -216,6 +242,8 @@ public class MainActivity extends Activity {
         editText.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editText.setKeyListener(decimalKeyListener);
         editText.addTextChangedListener(new CreditoTextWatcher());
+        editText.setTextColor(getResources().getColor(R.color.credito_text));
+        editText.setTextSize(25);
         
         editTextList.add(editText);
         
@@ -229,9 +257,13 @@ public class MainActivity extends Activity {
      */
     private Button createButton() {
         Button button = new Button(this);
-        button.setText(R.string.x);
+        button.setText(R.string.remove_credito);
         button.setOnClickListener(btnRemoverCreditoListener);
-        
+
+        button.setBackgroundColor(getResources().getColor(R.color.light_gray));
+        button.setTextColor(Color.WHITE);
+        button.setTextSize(30);
+
         return button;
     }
     

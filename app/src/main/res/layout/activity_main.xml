@@ -3,8 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp" >
+    android:background="@color/dark_gray">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ll_tela"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/txvSituacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="@dimen/situacao_text_size" />
+
+            <TextView
+                android:id="@+id/txvMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="@dimen/media_text_size" />
+
+            <TextView
+                android:id="@+id/txvInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/info_text_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/light_gray"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnAC"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="AC"/>
+
+            <Button
+                    android:id="@+id/btnCalcular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:layout_weight="0.5"
+                android:textSize="30sp"
+                android:text="="/>
+
+            <Button
+                android:id="@+id/btnAdicionarCredito"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="30sp"
+                android:text="+"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llCreditos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,5 +188,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
+-->
 </ScrollView>
