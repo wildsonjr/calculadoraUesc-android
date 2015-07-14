@@ -1,0 +1,21 @@
+<resources>
+
+    <string name="app_name">Calculadora UESC</string>
+    <string name="title_activity_main">Calculadora UESC</string>
+    
+    <string name="adicionar_credito">Adicionar crédito</string>
+    <string name="calcular">Calcular</string>
+    
+    <string name="hint">%1$dº crédito</string>
+    <string name="x">x</string>
+    
+    <string name="situacao">Situação:</string>
+    <string name="media">Média:</string>
+    <string name="txv_final">Final:</string>
+    
+    <string name="not_available">N/A</string>
+    <string name="aprovado">Aprovado</string>
+    <string name="reprovado">Reprovado</string>
+    <string name="em_final">Em final</string>
+
+</resources>
